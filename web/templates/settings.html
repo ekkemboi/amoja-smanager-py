@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page">
+    <header class="page-header">
+        <div>
+            <p class="eyebrow">Configuration</p>
+            <h1>Settings</h1>
+            <p>Configuration is read from environment variables.</p>
+        </div>
+        <span class="badge badge-neutral">Read only</span>
+    </header>
+
+    <div class="alert">
+        <i data-lucide="settings" aria-hidden="true"></i>
+        <div>
+            <strong>Environment-driven.</strong>
+            Copy <span class="mono">.env.example</span> to <span class="mono">.env</span>,
+            adjust values and restart the server. Secrets are never rendered here.
+        </div>
+    </div>
+
+    <section class="grid grid-two">
+        <article class="card">
+            <div class="card-header">
+                <div>
+                    <h2>Runtime</h2>
+                    <p>Current resolved configuration</p>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tbody>
+                        {% for label, value in settings %}
+                        <tr>
+                            <th scope="row">{{ label }}</th>
+                            <td class="mono">{{ value }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-header">
+                <div>
+                    <h2>Environment variables</h2>
+                    <p>Names only, never values</p>
+                </div>
+            </div>
+            <div class="card-body stack">
+                <pre class="code-block">FLASK_ENV
+SECRET_KEY
+DATABASE_URL
+APP_TIMEZONE
+MEDIA_ROOT
+MAX_CONTENT_LENGTH</pre>
+                <p class="small muted">
+                    <span class="mono">SECRET_KEY</span> is required in production and must
+                    be a long random value. Never commit <span class="mono">.env</span>.
+                </p>
+            </div>
+        </article>
+    </section>
+
+    <section class="card">
+        <div class="card-header">
+            <div>
+                <h2>Single-writer database</h2>
+                <p>SQLite is intentional for this single-user app</p>
+            </div>
+            <span class="badge badge-neutral">SQLite</span>
+        </div>
+        <div class="card-body">
+            <ul class="plain-list">
+                <li>
+                    <i data-lucide="database" aria-hidden="true"></i>
+                    <span>WAL mode, foreign keys and a five-second busy timeout are enabled on every connection.</span>
+                </li>
+                <li>
+                    <i data-lucide="users" aria-hidden="true"></i>
+                    <span>Run one Gunicorn worker. Background publishing will use a single scheduled worker.</span>
+                </li>
+                <li>
+                    <i data-lucide="archive" aria-hidden="true"></i>
+                    <span>Back up <span class="mono">instance/</span> regularly with <span class="mono">make db-backup</span>.</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+{% endblock %}

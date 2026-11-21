@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page">
+    <header class="page-header">
+        <div>
+            <p class="eyebrow">Private workspace</p>
+            <h1>Overview</h1>
+            <p>A quiet home for drafts, schedules and results. The shell is live; publishing is not connected yet.</p>
+        </div>
+        <span class="badge badge-mock">Mock only</span>
+    </header>
+
+    <div class="alert">
+        <i data-lucide="info" aria-hidden="true"></i>
+        <div>
+            <strong>Signed in as {{ current_user.username }}.</strong>
+            The application factory, SQLite schema, migrations, private login and
+            dashboard shell are in place. Composer, scheduling, publishing and
+            analytics arrive in later phases.
+        </div>
+    </div>
+
+    <section class="grid grid-stats" aria-label="Publishing summary">
+        <article class="stat-card">
+            <p class="stat-label">Drafts</p>
+            <p class="stat-value">0</p>
+            <p class="stat-note">Composer not implemented</p>
+        </article>
+        <article class="stat-card">
+            <p class="stat-label">Scheduled</p>
+            <p class="stat-value">0</p>
+            <p class="stat-note">Scheduler not implemented</p>
+        </article>
+        <article class="stat-card">
+            <p class="stat-label">Published</p>
+            <p class="stat-value">0</p>
+            <p class="stat-note">Mock adapter not wired</p>
+        </article>
+        <article class="stat-card">
+            <p class="stat-label">Needs review</p>
+            <p class="stat-value">0</p>
+            <p class="stat-note">Manual tasks not implemented</p>
+        </article>
+    </section>
+
+    <section class="grid grid-two">
+        <article class="card">
+            <div class="card-header">
+                <div>
+                    <h2>Foundation in place</h2>
+                    <p>What is already in place</p>
+                </div>
+                <span class="badge badge-success">Done</span>
+            </div>
+            <div class="card-body">
+                <ul class="check-list">
+                    <li>
+                        <i data-lucide="check" aria-hidden="true"></i>
+                        <span>Flask app factory with development, testing and production configuration.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check" aria-hidden="true"></i>
+                        <span>SQLite database with WAL, foreign keys and a busy timeout enabled.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check" aria-hidden="true"></i>
+                        <span>Alembic migration history for the full social publishing schema.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check" aria-hidden="true"></i>
+                        <span>Jinja dashboard shell with HTMX navigation, dark mode and responsive layout.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check" aria-hidden="true"></i>
+                        <span>Private owner login with scrypt password hashing, hashed session cookies and CSRF protection.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check" aria-hidden="true"></i>
+                        <span>Five failed sign-ins lock the owner out for 15 minutes.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check" aria-hidden="true"></i>
+                        <span>Health check at <span class="mono">/healthz</span> and pytest smoke coverage.</span>
+                    </li>
+                </ul>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-header">
+                <div>
+                    <h2>Next port phases</h2>
+                    <p>Work queued in <span class="mono">PLAN.md</span></p>
+                </div>
+                <span class="badge badge-neutral">Planned</span>
+            </div>
+            <div class="card-body">
+                <ul class="plain-list">
+                    <li>
+                        <i data-lucide="send" aria-hidden="true"></i>
+                        <span><strong>Publishing contract.</strong> Stable port and a deterministic mock adapter.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="file-text" aria-hidden="true"></i>
+                        <span><strong>Composer and media.</strong> Drafts, uploads, variants and platform previews.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="calendar" aria-hidden="true"></i>
+                        <span><strong>Scheduling and worker.</strong> Durable jobs, bounded retries and reconciliation.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="bar-chart-3" aria-hidden="true"></i>
+                        <span><strong>Analytics.</strong> Simulated provider first, with explicit provenance labels.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="plug" aria-hidden="true"></i>
+                        <span><strong>Live integrations.</strong> Official APIs only, after credentials and approval.</span>
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </section>
+
+    <section class="card">
+        <div class="card-header">
+            <div>
+                <h2>Target platforms</h2>
+                <p>Five platforms, each with its own account-level publishing mode</p>
+            </div>
+            <span class="badge badge-neutral">5 platforms</span>
+        </div>
+        <div class="card-body stack">
+            <div class="chip-row">
+                <span class="chip"><i data-lucide="camera" aria-hidden="true"></i> Instagram</span>
+                <span class="chip"><i data-lucide="thumbs-up" aria-hidden="true"></i> Facebook</span>
+                <span class="chip"><i data-lucide="music-2" aria-hidden="true"></i> TikTok</span>
+                <span class="chip"><i data-lucide="at-sign" aria-hidden="true"></i> X</span>
+                <span class="chip"><i data-lucide="play" aria-hidden="true"></i> YouTube</span>
+            </div>
+            <p class="small muted">
+                Presentation uses {{ app_timezone }}. Timestamps are stored in UTC.
+                No live platform integration, scraping or browser automation is enabled.
+            </p>
+        </div>
+    </section>
+</div>
+{% endblock %}

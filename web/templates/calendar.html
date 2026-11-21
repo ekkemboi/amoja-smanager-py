@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page">
+    <header class="page-header">
+        <div>
+            <p class="eyebrow">Schedule</p>
+            <h1>Calendar</h1>
+            <p>Schedule in your timezone; store and publish in UTC.</p>
+        </div>
+        <div class="row">
+            <button class="btn btn-secondary" type="button" disabled aria-label="Previous week">
+                <i data-lucide="chevron-left" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-secondary" type="button" disabled>Today</button>
+            <button class="btn btn-secondary" type="button" disabled aria-label="Next week">
+                <i data-lucide="chevron-right" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="alert">
+        <i data-lucide="clock" aria-hidden="true"></i>
+        <div>
+            <strong>Scheduling is not implemented yet.</strong>
+            This week view is a layout preview. No jobs are created and no posts are published.
+        </div>
+    </div>
+
+    <section class="card">
+        <div class="card-header">
+            <div>
+                <h2>{{ week_label }}</h2>
+                <p>Monday-first week</p>
+            </div>
+            <span class="badge badge-neutral">{{ app_timezone }}</span>
+        </div>
+        <div class="card-body">
+            <div class="week-grid">
+                {% for day in week_days %}
+                <div class="week-day {% if day.is_today %}is-today{% endif %}">
+                    <div class="week-day-label">
+                        <span>{{ day.label }}</span>
+                        <span>{{ day.day }}</span>
+                    </div>
+                    <p class="week-empty">No scheduled targets</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="card-header">
+            <div>
+                <h2>Timezone rules</h2>
+                <p>Planned behaviour for the scheduler</p>
+            </div>
+            <span class="badge badge-neutral">Planned</span>
+        </div>
+        <div class="card-body">
+            <ul class="plain-list">
+                <li>
+                    <i data-lucide="clock" aria-hidden="true"></i>
+                    <span>Local wall time is converted to UTC before a job is stored.</span>
+                </li>
+                <li>
+                    <i data-lucide="alert-triangle" aria-hidden="true"></i>
+                    <span>Spring-forward gaps are rejected; fall-back ambiguity resolves to the earlier instant.</span>
+                </li>
+                <li>
+                    <i data-lucide="shield" aria-hidden="true"></i>
+                    <span>Calendar ranges are start-inclusive and end-exclusive.</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+{% endblock %}

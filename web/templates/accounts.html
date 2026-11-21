@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page">
+    <header class="page-header">
+        <div>
+            <p class="eyebrow">Connections</p>
+            <h1>Accounts</h1>
+            <p>Each account chooses its own publishing mode.</p>
+        </div>
+        <button class="btn btn-secondary" type="button" disabled>
+            <i data-lucide="plus" aria-hidden="true"></i>
+            Add account
+        </button>
+    </header>
+
+    <div class="alert alert-warning">
+        <i data-lucide="shield-alert" aria-hidden="true"></i>
+        <div>
+            <strong>No account is connected.</strong>
+            Mock is the only available mode. API, browser and manual adapters are not
+            implemented, and the app never falls back from one mode to another silently.
+        </div>
+    </div>
+
+    <section class="grid grid-platforms" aria-label="Supported platforms">
+        {% for platform in platforms %}
+        <article class="platform-card">
+            <span class="platform-icon"><i data-lucide="{{ platform.icon }}" aria-hidden="true"></i></span>
+            <div>
+                <h3>{{ platform.name }}</h3>
+                <p>Not connected</p>
+            </div>
+            <span class="badge badge-neutral">Mock</span>
+        </article>
+        {% endfor %}
+    </section>
+
+    <section class="card">
+        <div class="card-header">
+            <div>
+                <h2>Publishing modes</h2>
+                <p>Selected per account and recorded on every attempt</p>
+            </div>
+            <span class="badge badge-neutral">Capabilities</span>
+        </div>
+        <div class="card-body">
+            <ul class="plain-list">
+                <li>
+                    <i data-lucide="flask-conical" aria-hidden="true"></i>
+                    <span><strong>Mock.</strong> Offline, deterministic simulation with no network access. First adapter to be implemented.</span>
+                </li>
+                <li>
+                    <i data-lucide="clipboard-check" aria-hidden="true"></i>
+                    <span><strong>Manual.</strong> Generates a review-and-publish task instead of claiming to publish externally.</span>
+                </li>
+                <li>
+                    <i data-lucide="plug" aria-hidden="true"></i>
+                    <span><strong>API.</strong> Official platform APIs only, after credentials and approval exist.</span>
+                </li>
+                <li>
+                    <i data-lucide="cloud-off" aria-hidden="true"></i>
+                    <span><strong>Browser.</strong> Optional, only for authorized workflows that respect platform rules. Not enabled.</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+{% endblock %}

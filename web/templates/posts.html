@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page">
+    <header class="page-header">
+        <div>
+            <p class="eyebrow">Composer</p>
+            <h1>Posts</h1>
+            <p>Compose once, tailor per platform, publish deliberately.</p>
+        </div>
+        <button class="btn btn-primary" type="button" disabled>
+            <i data-lucide="plus" aria-hidden="true"></i>
+            New post
+        </button>
+    </header>
+
+    <section class="card">
+        <div class="empty-state">
+            <span class="empty-icon"><i data-lucide="square-pen" aria-hidden="true"></i></span>
+            <h2>No drafts yet</h2>
+            <p>The composer is the next port phase. Once it lands, this page will list drafts, media and per-platform variants.</p>
+            <span class="badge badge-neutral">Coming soon</span>
+        </div>
+    </section>
+
+    <section class="grid grid-two">
+        <article class="card">
+            <div class="card-header">
+                <div>
+                    <h2>Platform variants</h2>
+                    <p>One body, tailored per account</p>
+                </div>
+                <span class="badge badge-neutral">Planned</span>
+            </div>
+            <div class="card-body">
+                <p class="small muted">
+                    Shared body text with optional overrides for each selected account.
+                    Variant platforms are derived from the accounts you choose, so a target
+                    can never drift away from its account.
+                </p>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-header">
+                <div>
+                    <h2>Validated media</h2>
+                    <p>Signature checks before anything is stored</p>
+                </div>
+                <span class="badge badge-neutral">Planned</span>
+            </div>
+            <div class="card-body">
+                <p class="small muted">
+                    JPEG, PNG, WebP, GIF, MP4, WebM and QuickTime will be verified by file
+                    signature, MIME type and size before being attached to a draft.
+                </p>
+            </div>
+        </article>
+    </section>
+</div>
+{% endblock %}

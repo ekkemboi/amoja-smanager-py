@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page">
+    <header class="page-header">
+        <div>
+            <p class="eyebrow">Measurement</p>
+            <h1>Analytics</h1>
+            <p>Simulated data is always labelled as simulated.</p>
+        </div>
+        <span class="badge badge-warning">No data</span>
+    </header>
+
+    <div class="alert alert-warning">
+        <i data-lucide="bar-chart-3" aria-hidden="true"></i>
+        <div>
+            <strong>No analytics has been collected.</strong>
+            The analytics port and mock provider are not implemented yet. When they land,
+            every chart will carry a visible simulated or live label.
+        </div>
+    </div>
+
+    <section class="card">
+        <div class="card-header">
+            <div>
+                <h2>Account metrics</h2>
+                <p>Choose a subject and a date range</p>
+            </div>
+            <div class="row">
+                <select class="input" disabled aria-label="Analytics subject">
+                    <option>Accounts</option>
+                </select>
+                <select class="input" disabled aria-label="Date range">
+                    <option>Last 30 days</option>
+                </select>
+                <button class="btn btn-secondary" type="button" disabled>
+                    <i data-lucide="refresh-cw" aria-hidden="true"></i>
+                    Refresh
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="chart-placeholder">
+                <i data-lucide="chart-column" aria-hidden="true"></i>
+                <p class="small">Charts will appear here once snapshots exist.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="grid grid-two">
+        <article class="card">
+            <div class="card-header">
+                <div>
+                    <h2>Simulated</h2>
+                    <p>Mock provider output</p>
+                </div>
+                <span class="badge badge-mock">Mock</span>
+            </div>
+            <div class="card-body">
+                <p class="small muted">
+                    Deterministic values generated offline for development and tests.
+                    They will always be labelled as simulated.
+                </p>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-header">
+                <div>
+                    <h2>Live</h2>
+                    <p>Official API output</p>
+                </div>
+                <span class="badge badge-neutral">Not available</span>
+            </div>
+            <div class="card-body">
+                <p class="small muted">
+                    Requires a connected account, approved API access and encrypted
+                    credentials. No live provider is registered.
+                </p>
+            </div>
+        </article>
+    </section>
+</div>
+{% endblock %}

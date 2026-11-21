@@ -1,0 +1,66 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Database and private runtime data
+*.db
+*.sqlite
+*.sqlite3
+instance/
+backups/
+
+# Uploaded media
+media/
+uploads/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test and tool caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+test-results/
+playwright-report/
+.playwright/
+screenshots/*.png
+screenshots/*.jpg
+screenshots/*.jpeg
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Runtime logs
+*.log
+logs/
+
+# Internal planning (kept local, not published)
+PLAN.md
+
+# Node tooling, if added later
+node_modules/
